@@ -2,6 +2,18 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 
+//get all questions
+router.get("/review", (req, res) => {
+  try {
+    const allReviewQuestionsBuffer = fs.readFileSync("./data/assignment.json");
+    const allReviewQuestions = JSON.parse(allReviewQuestionsBuffer);
+    console.log(allReviewQuestions);
+    res.status(200).send(allReviewQuestions);
+  } catch (error) {
+    res.status(500).send("Internal server error. Cannot retrieve all questions.");
+  }
+});
+
 //get single question based on question id passed with params
 router.get("/review/:id", (req, res) => {
   try {
