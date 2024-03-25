@@ -13,7 +13,7 @@
     "id": 2,
     "text": "What is the chemical formula for sodium chloride?",
     "options": [
-      { "id": 5, "text": "NaCl", "isCorrect": false },
+      { "id": 5, "text": "NaCl\u2082", "isCorrect": false },
       { "id": 6, "text": "Na\u2082Cl", "isCorrect": false },
       { "id": 7, "text": "NaCl", "isCorrect": true },
       { "id": 8, "text": "Na\u2082Cl\u2082", "isCorrect": false }
