@@ -56,3 +56,56 @@ async function addMessage(threadId, message) {
   });
   return response;
 }
+
+//create run
+async function runAssistant(threadId) {
+  const response = await openai.beta.threads.runs.create(threadId, {
+    assistant_id: assistantId,
+  });
+  console.log("runAssistant response", response);
+  return response;
+}
+
+async function checkingStatus(res, threadId, runId) {
+  const runObject = await openai.beta.threads.runs.retrieve(threadId, runId);
+
+  const status = runObject.status;
+  console.log(runObject);
+  console.log("Current status: " + status);
+
+  if (status == "completed") {
+    clearInterval(pollingInterval);
+
+    const messagesList = await openai.beta.threads.messages.list(threadId);
+    let messages = [];
+
+    messagesList.body.data.forEach((message) => {
+      messages.push(message.content);
+    });
+
+    res.json({ messages });
+  }
+}
+
+//create new thread
+app.get("/thread", (req, res) => {
+  createThread().then((thread) => {
+    res.json({ threadId: thread.id });
+  });
+});
+
+//route for adding a message
+app.post("/message", (req, res) => {
+  const { message, threadId } = req.body;
+  addMessage(threadId, message).then((message) => {
+    // Run the assistant
+    runAssistant(threadId).then((run) => {
+      const runId = run.id;
+
+      // Check the status
+      pollingInterval = setInterval(() => {
+        checkingStatus(res, threadId, runId);
+      }, 5000);
+    });
+  });
+});
