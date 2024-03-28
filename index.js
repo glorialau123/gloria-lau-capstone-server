@@ -66,27 +66,6 @@ async function runAssistant(threadId) {
   return response;
 }
 
-async function checkingStatus(res, threadId, runId) {
-  const runObject = await openai.beta.threads.runs.retrieve(threadId, runId);
-
-  const status = runObject.status;
-  console.log(runObject);
-  console.log("Current status: " + status);
-
-  if (status == "completed") {
-    clearInterval(pollingInterval);
-
-    const messagesList = await openai.beta.threads.messages.list(threadId);
-    let messages = [];
-
-    messagesList.body.data.forEach((message) => {
-      messages.push(message.content);
-    });
-
-    res.json({ messages });
-  }
-}
-
 //create new thread
 app.get("/thread", (req, res) => {
   createThread().then((thread) => {
@@ -94,18 +73,83 @@ app.get("/thread", (req, res) => {
   });
 });
 
-//route for adding a message
-app.post("/message", (req, res) => {
-  const { message, threadId } = req.body;
-  addMessage(threadId, message).then((message) => {
-    // Run the assistant
-    runAssistant(threadId).then((run) => {
-      const runId = run.id;
+// async function checkingStatus(res, threadId, runId) {
+//   const runObject = await openai.beta.threads.runs.retrieve(threadId, runId);
 
-      // Check the status
-      pollingInterval = setInterval(() => {
-        checkingStatus(res, threadId, runId);
-      }, 5000);
+//   const status = runObject.status;
+//   console.log("runObject", runObject);
+//   console.log("Current status: " + status);
+
+//   if (status == "completed") {
+//     clearInterval(pollingInterval);
+
+//     const messagesList = await openai.beta.threads.messages.list(threadId);
+//     let messages = [];
+
+//     messagesList.body.data.forEach((message) => {
+//       messages.push(message.content);
+//     });
+
+//     res.json({ messages });
+//   }
+// }
+
+// //route for adding a message
+// app.post("/message", (req, res) => {
+//   const { message, threadId } = req.body;
+//   addMessage(threadId, message).then((message) => {
+//     // Run the assistant
+//     runAssistant(threadId).then((run) => {
+//       const runId = run.id;
+
+//       // Check the status
+//       pollingInterval = setInterval(() => {
+//         checkingStatus(res, threadId, runId);
+//       }, 5000);
+//     });
+//   });
+// });
+
+app.post("/message", async (req, res) => {
+  console.log("I am reached");
+  try {
+    const { message, threadId } = req.body;
+    await addMessage(threadId, message);
+    console.log("message to be added", message);
+    //run assistant
+    const run = await openai.beta.threads.runs.create(threadId, {
+      assistant_id: assistantId,
     });
-  });
+
+    let conversation = []; // Array to store conversation messages
+
+    const checkStatusAndPrintMessages = async (threadId, runId) => {
+      let runStatus = await openai.beta.threads.runs.retrieve(threadId, runId);
+      if (runStatus.status === "completed") {
+        let messages = await openai.beta.threads.messages.list(threadId);
+        messages.data.forEach((msg) => {
+          const role = msg.role;
+          const content = msg.content[0].text.value;
+          const roleName = role === "assistant" ? "Mr. Fluff" : role;
+          console.log(`${roleName}: ${content}`);
+          conversation.push(
+            `${roleName.charAt(0).toUpperCase() + roleName.slice(1)}: ${content}`
+          );
+          // console.log(`${role.charAt(0).toUpperCase() + role.slice(1)}: ${content}`);
+          // conversation.push(
+          //   `${role.charAt(0).toUpperCase() + role.slice(1)}: ${content}`
+          // );
+        });
+        res.json({ conversation });
+      } else {
+        console.log("Run is not completed yet.");
+      }
+    };
+
+    setTimeout(() => {
+      checkStatusAndPrintMessages(threadId, run.id);
+    }, 5000);
+  } catch (error) {
+    console.log(error);
+  }
 });
