@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const axios = require("axios");
 const OpenAI = require("openai");
 const { PORT, OPENAI_API_KEY } = process.env;
 const openai = new OpenAI(OPENAI_API_KEY);
@@ -58,13 +57,13 @@ async function addMessage(threadId, message) {
 }
 
 //create run
-async function runAssistant(threadId) {
-  const response = await openai.beta.threads.runs.create(threadId, {
-    assistant_id: assistantId,
-  });
-  console.log("runAssistant response", response);
-  return response;
-}
+// async function runAssistant(threadId) {
+//   const response = await openai.beta.threads.runs.create(threadId, {
+//     assistant_id: assistantId,
+//   });
+//   console.log("runAssistant response", response);
+//   return response;
+// }
 
 //create new thread
 app.get("/thread", (req, res) => {
@@ -120,7 +119,9 @@ app.post("/message", async (req, res) => {
     const run = await openai.beta.threads.runs.create(threadId, {
       assistant_id: assistantId,
     });
+    const runId = run.id;
 
+    console.log("run response", run);
     let conversation = []; // Array to store conversation messages
 
     const checkStatusAndPrintMessages = async (threadId, runId) => {
@@ -135,10 +136,6 @@ app.post("/message", async (req, res) => {
           conversation.push(
             `${roleName.charAt(0).toUpperCase() + roleName.slice(1)}: ${content}`
           );
-          // console.log(`${role.charAt(0).toUpperCase() + role.slice(1)}: ${content}`);
-          // conversation.push(
-          //   `${role.charAt(0).toUpperCase() + role.slice(1)}: ${content}`
-          // );
         });
         res.json({ conversation });
       } else {
@@ -147,8 +144,8 @@ app.post("/message", async (req, res) => {
     };
 
     setTimeout(() => {
-      checkStatusAndPrintMessages(threadId, run.id);
-    }, 5000);
+      checkStatusAndPrintMessages(threadId, runId);
+    }, 10000);
   } catch (error) {
     console.log(error);
   }
