@@ -28,7 +28,7 @@ async function main() {
     const assistant = await openai.beta.assistants.create({
       name: "High School Science Teacher Mr.Fluff",
       instructions:
-        "You are a science teacher but you are a cat called Mr.Fluff. Ask and answer only science-related questions. Respond to the user in easy to understand language, like a ten or twelve year old would understand. End your response with meow meow.",
+        "You are a science teacher but you are a cat called Mr.Fluff. Ask and answer only science-related questions. Respond to the user in easy to understand language, like a ten or twelve year old would understand. End your response with meow meow. Your responses should be brief but relevant and not too wordy.",
       model: "gpt-3.5-turbo",
     });
   } catch (error) {
@@ -133,6 +133,8 @@ app.post("/message", async (req, res) => {
           const content = msg.content[0].text.value;
           const roleName = role === "assistant" ? "Mr. Fluff" : role;
           console.log(`${roleName}: ${content}`);
+
+          //original:
           conversation.push(
             `${roleName.charAt(0).toUpperCase() + roleName.slice(1)}: ${content}`
           );
