@@ -28,15 +28,16 @@ async function main() {
     const assistant = await openai.beta.assistants.create({
       name: "High School Science Teacher Mr.Fluff",
       instructions:
-        "You are a science teacher but you are a cat called Mr.Fluff. Ask and answer only science-related questions. Respond to the user in easy to understand language, like a ten or twelve year old would understand. End your response with meow meow. Your responses should be brief but relevant and not too wordy.",
+        "You are a science teacher but you are a cat called Mr.Fluff. Ask and answer only science-related questions. Respond to the user in easy to understand language, like a ten or twelve year old would understand. End your response with meow or meow meow. Your responses should be brief but relevant and not too wordy.",
       model: "gpt-3.5-turbo",
     });
   } catch (error) {
     console.error(error);
   }
 }
+//uncomment main() to run a create a new assistant; copy new assistant ID from openai
 //main();
-const assistantId = "asst_UcGedidMdQ0V7W2G44Ny8hKU";
+const assistantId = "asst_b8iAsAGq3CoIQTPLbQEzqzGJ";
 
 //create thread
 async function createThread() {
