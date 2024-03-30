@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "text": "What is the purpose of balancing chemical equations?",
+    "options": [
+      {
+        "id": 1,
+        "text": "To make the equation look neat and organized",
+        "isCorrect": false
+      },
+      {
+        "id": 2,
+        "text": "To ensure the law of conservation of mass is obeyed",
+        "isCorrect": true
+      },
+      {
+        "id": 3,
+        "text": "To change the chemical properties of the reactants",
+        "isCorrect": false
+      },
+      { "id": 4, "text": "To increase the reaction rate", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 2,
+    "text": "In a balanced chemical equation, what should be equal on both sides of the equation?",
+    "options": [
+      { "id": 5, "text": "Number of reactants", "isCorrect": false },
+      { "id": 6, "text": "Number of products", "isCorrect": false },
+      { "id": 7, "text": "Number of atoms of each element", "isCorrect": true },
+      { "id": 8, "text": "Number of electrons", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 3,
+    "text": "What is the coefficient in a chemical equation?",
+    "options": [
+      { "id": 9, "text": "The number of atoms of each element", "isCorrect": false },
+      {
+        "id": 10,
+        "text": "The number of molecules of each reactant",
+        "isCorrect": false
+      },
+      {
+        "id": 11,
+        "text": "The number written in front of a reactant or product",
+        "isCorrect": true
+      },
+      { "id": 12, "text": "The charge of an ion", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 4,
+    "text": "What is the coefficient of O₂ in the balanced equation for the combustion of propane (C₃H₈ + O₂ -> CO₂ + H₂O)?",
+    "options": [
+      { "id": 13, "text": "1", "isCorrect": false },
+      { "id": 14, "text": "2", "isCorrect": true },
+      { "id": 15, "text": "3", "isCorrect": false },
+      { "id": 16, "text": "4", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 5,
+    "text": "What is the balanced equation for the reaction between sulfuric acid and potassium hydroxide?",
+    "options": [
+      { "id": 17, "text": "H₂SO₄ + KOH -> K₂SO₄ + H₂O", "isCorrect": false },
+      { "id": 18, "text": "H₂SO₄ + 2KOH -> K₂SO₄ + 2H₂O", "isCorrect": true },
+      { "id": 19, "text": "H₂SO₄ + 2KOH -> K₂SO₄ + H₂O", "isCorrect": false },
+      { "id": 20, "text": "H₂SO₄ + KOH -> K₂SO₄ + 2H₂O", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 6,
+    "text": "What is the coefficient of CO₂ in the balanced equation for the combustion of methane (CH₄ + O₂ -> CO₂ + H₂O)?",
+    "options": [
+      { "id": 21, "text": "1", "isCorrect": false },
+      { "id": 22, "text": "2", "isCorrect": true },
+      { "id": 23, "text": "3", "isCorrect": false },
+      { "id": 24, "text": "4", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 7,
+    "text": "What is the balanced equation for the reaction between magnesium and oxygen?",
+    "options": [
+      { "id": 25, "text": "Mg + O₂ -> MgO", "isCorrect": true },
+      { "id": 26, "text": "MgO₂ -> Mg + O", "isCorrect": false },
+      { "id": 27, "text": "MgO -> Mg + O", "isCorrect": false },
+      { "id": 28, "text": "MgO -> Mg + O₂", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 8,
+    "text": "What is the coefficient of H₂O in the balanced equation for the reaction between sulfuric acid and calcium hydroxide?",
+    "options": [
+      { "id": 29, "text": "1", "isCorrect": true },
+      { "id": 30, "text": "2", "isCorrect": false },
+      { "id": 31, "text": "3", "isCorrect": false },
+      { "id": 32, "text": "4", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 9,
+    "text": "What is the balanced equation for the reaction between hydrochloric acid and sodium hydroxide?",
+    "options": [
+      { "id": 33, "text": "HCl + NaOH -> NaCl + H₂O", "isCorrect": true },
+      { "id": 34, "text": "HCl + NaOH -> NaCl₂ + H₂O", "isCorrect": false },
+      { "id": 35, "text": "HCl₂ + NaOH -> NaCl + H₂O", "isCorrect": false },
+      { "id": 36, "text": "HCl₂ + NaOH -> NaCl₂ + H₂O", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 10,
+    "text": "What is the coefficient of CH₄ in the balanced equation for the combustion of propane (C₃H₈ + O₂ -> CO₂ + H₂O)?",
+    "options": [
+      { "id": 37, "text": "1", "isCorrect": false },
+      { "id": 38, "text": "2", "isCorrect": false },
+      { "id": 39, "text": "3", "isCorrect": true },
+      { "id": 40, "text": "4", "isCorrect": false }
+    ]
+  }
+]

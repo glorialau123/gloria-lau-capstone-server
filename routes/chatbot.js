@@ -41,11 +41,19 @@ async function addMessage(threadId, message) {
 }
 
 //create new thread
-router.get("/thread", (req, res) => {
-  createThread().then((thread) => {
+router.get("/thread", async (req, res) => {
+  try {
+    const thread = await createThread();
     res.json({ threadId: thread.id });
-  });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error." });
+  }
 });
+// router.get("/thread", (req, res) => {
+//   createThread().then((thread) => {
+//     res.json({ threadId: thread.id });
+//   });
+// });
 
 router.post("/message", async (req, res) => {
   console.log("I am reached");

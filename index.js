@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const { PORT } = process.env;
 
-const topicRoutes = require("./routes/reviewquestions");
+const topicRoutes = require("./routes/questionsroute");
 const chatbotRoutes = require("./routes/chatbot");
 
 //Middleware
