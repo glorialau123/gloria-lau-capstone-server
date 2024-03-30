@@ -13,15 +13,15 @@
     "id": 2,
     "text": "What is the chemical formula for sodium chloride?",
     "options": [
-      { "id": 5, "text": "NaCl\u2082", "isCorrect": false },
-      { "id": 6, "text": "Na\u2082Cl", "isCorrect": false },
+      { "id": 5, "text": "NaCl₂", "isCorrect": false },
+      { "id": 6, "text": "Na₂Cl", "isCorrect": false },
       { "id": 7, "text": "NaCl", "isCorrect": true },
-      { "id": 8, "text": "Na\u2082Cl\u2082", "isCorrect": false }
+      { "id": 8, "text": "Na₂Cl₂", "isCorrect": false }
     ]
   },
   {
     "id": 3,
-    "text": "What is the name of the compound with the formula Ca(OH)\u2082?",
+    "text": "What is the name of the compound with the formula Ca(OH)₂?",
     "options": [
       { "id": 9, "text": "Calcium oxide", "isCorrect": false },
       { "id": 10, "text": "Calcium hydroxide", "isCorrect": true },
@@ -33,10 +33,10 @@
     "id": 4,
     "text": "Which of the following is a strong acid?",
     "options": [
-      { "id": 13, "text": "H\u2082O", "isCorrect": false },
-      { "id": 14, "text": "H\u2082SO\u2084", "isCorrect": true },
-      { "id": 15, "text": "CH\u2083OH", "isCorrect": false },
-      { "id": 16, "text": "NH\u2083", "isCorrect": false }
+      { "id": 13, "text": "H₂O", "isCorrect": false },
+      { "id": 14, "text": "H₂SO₄", "isCorrect": true },
+      { "id": 15, "text": "CH₃OH", "isCorrect": false },
+      { "id": 16, "text": "NH₃", "isCorrect": false }
     ]
   },
   {
@@ -76,17 +76,17 @@
       { "id": 29, "text": "Turn litmus paper red", "isCorrect": false },
       { "id": 30, "text": "Taste sour", "isCorrect": false },
       { "id": 31, "text": "Feel slippery", "isCorrect": true },
-      { "id": 32, "text": "Release H\u207A ions in water", "isCorrect": false }
+      { "id": 32, "text": "Release H⁺ ions in water", "isCorrect": false }
     ]
   },
   {
     "id": 9,
     "text": "What is the formula for sulfuric acid?",
     "options": [
-      { "id": 33, "text": "H\u2082SO\u2083", "isCorrect": false },
+      { "id": 33, "text": "H₂SO₃", "isCorrect": false },
       { "id": 34, "text": "HCl", "isCorrect": false },
-      { "id": 35, "text": "HNO\u2083", "isCorrect": false },
-      { "id": 36, "text": "H\u2082SO\u2084", "isCorrect": true }
+      { "id": 35, "text": "HNO₃", "isCorrect": false },
+      { "id": 36, "text": "H₂SO₄", "isCorrect": true }
     ]
   },
   {

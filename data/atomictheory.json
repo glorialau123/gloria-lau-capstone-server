@@ -91,12 +91,12 @@
   },
   {
     "id": 10,
-    "text": "What is the approximate diameter of an atom?",
+    "text": "What type of ion is formed when an atom loses electrons?",
     "options": [
-      { "id": 37, "text": "1 picometer", "isCorrect": false },
-      { "id": 38, "text": "1 nanometer", "isCorrect": false },
-      { "id": 39, "text": "1 angstrom", "isCorrect": false },
-      { "id": 40, "text": "100 picometers", "isCorrect": true }
+      { "id": 45, "text": "Cation", "isCorrect": true },
+      { "id": 46, "text": "Anion", "isCorrect": false },
+      { "id": 47, "text": "Neutral ion", "isCorrect": false },
+      { "id": 48, "text": "Ionic compound", "isCorrect": false }
     ]
   }
 ]
