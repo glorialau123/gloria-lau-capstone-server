@@ -18,21 +18,21 @@ async function main() {
     console.error(error);
   }
 }
-//uncomment main() to run/create a new assistant; copy new assistant ID from openai and paste as variable assistantId
+//uncomment main() to run/create a new assistant
 //main();
+
+//copy new assistant ID from openai and use for variable assistantId
 const assistantId = "asst_b8iAsAGq3CoIQTPLbQEzqzGJ";
 
-//create thread
+//create thread function
 async function createThread() {
-  console.log("Creating new thread");
   const thread = await openai.beta.threads.create();
   return thread;
 }
 
-//add message
+//add message function
 //pass threadId so assistant knows which thread to add message to
 async function addMessage(threadId, message) {
-  console.log(`adding new message to thread: ${threadId}`);
   const response = await openai.beta.threads.messages.create(threadId, {
     role: "user",
     content: message,
@@ -40,7 +40,7 @@ async function addMessage(threadId, message) {
   return response;
 }
 
-//create new thread
+//route to create new thread via frontend axios call
 router.get("/thread", async (req, res) => {
   try {
     const thread = await createThread();
@@ -49,25 +49,18 @@ router.get("/thread", async (req, res) => {
     res.status(500).json({ error: "Internal server error." });
   }
 });
-// router.get("/thread", (req, res) => {
-//   createThread().then((thread) => {
-//     res.json({ threadId: thread.id });
-//   });
-// });
 
+//route to post new message via frontend axios call
 router.post("/message", async (req, res) => {
-  console.log("I am reached");
   try {
     const { message, threadId } = req.body;
     await addMessage(threadId, message);
-    console.log("message to be added", message);
     //run assistant
     const run = await openai.beta.threads.runs.create(threadId, {
       assistant_id: assistantId,
     });
     const runId = run.id;
 
-    console.log("run response", run);
     let conversation = []; // Array to store conversation messages
 
     const checkStatusAndPrintMessages = async (threadId, runId) => {
@@ -78,14 +71,14 @@ router.post("/message", async (req, res) => {
           const role = msg.role;
           const content = msg.content[0].text.value;
           const roleName = role === "assistant" ? "Mr. Fluff" : role;
-          console.log(`${roleName}: ${content}`);
           conversation.push(
             `${roleName.charAt(0).toUpperCase() + roleName.slice(1)}: ${content}`
           );
         });
-        res.json({ conversation });
+        res.status(200).json({ conversation });
       } else {
         console.log("Run is not completed yet.");
+        res.status(500).send("Internal server error.");
       }
     };
 
