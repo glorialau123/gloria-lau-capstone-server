@@ -9,12 +9,9 @@ router.get("/:topicname/:id", (req, res) => {
 
     const allQuestionsBuffer = fs.readFileSync(`./data/${topicname}.json`);
     const allQuestions = JSON.parse(allQuestionsBuffer);
-    console.log("Parsed JSON:", allQuestions);
-    console.log("question id is:", id);
     const selectedQuestion = allQuestions.find(
       (questionItem) => questionItem.id === parseInt(id)
     );
-    console.log(selectedQuestion);
     if (selectedQuestion) {
       res.status(200).send(selectedQuestion);
     } else {
