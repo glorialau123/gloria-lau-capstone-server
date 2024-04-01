@@ -1,0 +1,118 @@
+[
+  {
+    "id": 1,
+    "text": "What is an ionic compound?",
+    "options": [
+      {
+        "id": 1,
+        "text": "A compound formed by sharing electrons between atoms",
+        "isCorrect": false
+      },
+      {
+        "id": 2,
+        "text": "A compound formed by the transfer of electrons between atoms",
+        "isCorrect": true
+      },
+      { "id": 3, "text": "A compound formed only by nonmetals", "isCorrect": false },
+      {
+        "id": 4,
+        "text": "A compound formed by the covalent bonding of atoms",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "text": "What type of elements are typically involved in the formation of ionic compounds?",
+    "options": [
+      { "id": 5, "text": "Two nonmetals", "isCorrect": false },
+      { "id": 6, "text": "A metal and a nonmetal", "isCorrect": true },
+      { "id": 7, "text": "Two metals", "isCorrect": false },
+      { "id": 8, "text": "Transition metals", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 3,
+    "text": "What is the name of the compound with the formula NaCl?",
+    "options": [
+      { "id": 9, "text": "Sodium chloride", "isCorrect": true },
+      { "id": 10, "text": "Nitrogen chloride", "isCorrect": false },
+      { "id": 11, "text": "Nickel chloride", "isCorrect": false },
+      { "id": 12, "text": "Sulfur chloride", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 4,
+    "text": "What is the name of the compound with the formula Ca(OH)₂?",
+    "options": [
+      { "id": 13, "text": "Calcium oxide", "isCorrect": false },
+      { "id": 14, "text": "Calcium hydroxide", "isCorrect": true },
+      { "id": 15, "text": "Carbon dioxide", "isCorrect": false },
+      { "id": 16, "text": "Copper(II) oxide", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 5,
+    "text": "Which of the following is a characteristic of ionic compounds?",
+    "options": [
+      { "id": 17, "text": "Low melting and boiling points", "isCorrect": false },
+      {
+        "id": 18,
+        "text": "Good electrical conductivity in solid state",
+        "isCorrect": false
+      },
+      { "id": 19, "text": "Brittle and hard", "isCorrect": true },
+      { "id": 20, "text": "Covalent bonds", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 6,
+    "text": "What is the chemical formula for magnesium oxide?",
+    "options": [
+      { "id": 21, "text": "MgO", "isCorrect": true },
+      { "id": 22, "text": "Mg₂O", "isCorrect": false },
+      { "id": 23, "text": "MgO₂", "isCorrect": false },
+      { "id": 24, "text": "Mg₂O₃", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 7,
+    "text": "Which ion does potassium typically form?",
+    "options": [
+      { "id": 25, "text": "K⁺", "isCorrect": true },
+      { "id": 26, "text": "K⁻", "isCorrect": false },
+      { "id": 27, "text": "K₂⁺", "isCorrect": false },
+      { "id": 28, "text": "KO₂", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 8,
+    "text": "What is the chemical formula for calcium chloride?",
+    "options": [
+      { "id": 29, "text": "CaCl", "isCorrect": false },
+      { "id": 30, "text": "CaCl₂", "isCorrect": true },
+      { "id": 31, "text": "CaCl₃", "isCorrect": false },
+      { "id": 32, "text": "Ca₂Cl", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 9,
+    "text": "What is the charge on the sulfate ion (SO₄²⁻)?",
+    "options": [
+      { "id": 33, "text": "2⁻", "isCorrect": true },
+      { "id": 34, "text": "1⁻", "isCorrect": false },
+      { "id": 35, "text": "1⁺", "isCorrect": false },
+      { "id": 36, "text": "2⁺", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 10,
+    "text": "What is the chemical formula for sulfuric acid?",
+    "options": [
+      { "id": 37, "text": "H₂SO₃", "isCorrect": false },
+      { "id": 38, "text": "HCl", "isCorrect": false },
+      { "id": 39, "text": "HNO₃", "isCorrect": false },
+      { "id": 40, "text": "H₂SO₄", "isCorrect": true }
+    ]
+  }
+]
