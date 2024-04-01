@@ -84,7 +84,7 @@ router.post("/message", async (req, res) => {
 
     setTimeout(() => {
       checkStatusAndPrintMessages(threadId, runId);
-    }, 10000);
+    }, 15000);
   } catch (error) {
     console.log(error);
   }
