@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
+const knexConfig = require("../knexfile");
+const knex = require("knex")(knexConfig);
 
 //get single question based on question id passed with params
 router.get("/:topicname/:id", (req, res) => {
@@ -19,6 +21,19 @@ router.get("/:topicname/:id", (req, res) => {
     }
   } catch (error) {
     res.status(500).send("Internal server error.");
+  }
+});
+
+//TODO test with database
+//need to join table where question_id is the same for the options
+router.get("/testing", async (req, res) => {
+  console.log(knex);
+
+  try {
+    const data = await knex.select("*").from("acidBaseQuestions");
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 
