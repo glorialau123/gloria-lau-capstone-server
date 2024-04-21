@@ -30,11 +30,44 @@ router.get("/testing", async (req, res) => {
   console.log(knex);
 
   try {
-    const data = await knex.select("*").from("acidBaseQuestions");
+    const data = await knex("acidBaseQuestions").select(
+      "id as question_id",
+      "text as question_text"
+    );
+
+    await Promise.all(
+      data.map(async (question) => {
+        const options = await knex("acidBaseOptions")
+          .where("question_id", question.question_id)
+          .select("id as option_id", "text as option_text", "isCorrect");
+        question.options = options;
+      })
+    );
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+
+  // try {
+  //   const data = await knex("acidBaseOptions")
+  //     .join("acidBaseQuestions", "acidBaseQuestions.id", "acidBaseOptions.question_id")
+  //     .select(
+  //       "acidBaseQuestions.text as question_text",
+  //       "acidBaseOptions.id as option_id",
+  //       "acidBaseOptions.text as option_text",
+  //       "acidBaseOptions.isCorrect"
+  //     );
+  //   res.status(200).json(data);
+  // } catch (error) {
+  //   res.status(500).json({ error: error.message });
+  // }
+
+  // try {
+  //   const data = await knex.select("*").from("acidBaseOptions");
+  //   res.status(200).json(data);
+  // } catch (error) {
+  //   res.status(500).json({ error: error.message });
+  // }
 });
 
 module.exports = router;
