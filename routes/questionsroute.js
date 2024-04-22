@@ -5,6 +5,7 @@ const knexConfig = require("../knexfile");
 const { setEngine } = require("crypto");
 const knex = require("knex")(knexConfig);
 
+//original: using JSON files
 //get single question based on question id passed with params
 // router.get("/:topicname/:id", (req, res) => {
 //   try {
@@ -25,10 +26,9 @@ const knex = require("knex")(knexConfig);
 //   }
 // });
 
-//TODO test with database
+//TODO test with databases
 //need to join table where question_id is the same for the options
 router.get("/:topicname/:id", async (req, res) => {
-  console.log(knex);
   const { topicname, id } = req.params;
   console.log("topic name", topicname);
   console.log("id", id);
