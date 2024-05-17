@@ -1,6 +1,7 @@
 # Empowering Learning with AI: Science with Mr. Fluff
 
 ## Deployed Site: https://main--mrfluff.netlify.app/
+### Frontend Code: https://github.com/glorialau123/gloria-lau-capstone-client/
 
 ## Overview
 
@@ -15,16 +16,13 @@ One of the challenges that students can face is the lack of assistance when diff
 Users will be high school Science 10 students who have access to mobile phones or computers. They will use the application as a potential assignment or review tool.
 
 ### Features
-- Login Page
 - Selection of Topics Page
 - Question Page
 - Scores Page
   
 The site is responsive at mobile (320px), tablet (768px) and desktop (1280px) screens.
 
-Upon opening the application, the user is greeted by a login page. Currently, the login page takes in any username and password combination.
-
-Signing in through the login page brings the user to the selections page of different chemistry topics.
+Upon opening the application, the user is greeted by the selections/home page of different chemistry topics.
 Clicking on a topic brings the user to the question page, showing the first question of the selected topic, along with multiple choice selections.
 
 On the question page, the user is able to click on an answer and have it display as right or wrong. At any time, an instructor chatbot is available to take in questions. Clicking on the "ask" button without any user input will pass the selected question and options to the chatbot. The user can also input any questions they'd like and the chatbot will answer them if they are science-related. 
@@ -61,15 +59,6 @@ The application uses OpenAI's assistants API and questions/answers taken from JS
 - For the questions and answers, the front-end and back-end implements HTTP GET requests for Q/A retrieval. For the chatbot and user responses, the front-end implements HTTP POST requests to send queries and the back-end implements GET/POST requests, coupled with OpenAI's Node API Library and Assistants API. Parameters for the name, instructions and model were given when creating the AI assistant. 
 
 ### Screenshots
-#### Login Page:
-- Mobile:
-  
-  ![image](https://github.com/glorialau123/gloria-lau-capstone-client/assets/96962463/ace52214-3d6d-4f36-9b3d-2a02bfc07947)
-- Tablet/Desktop:
-  
-  ![image](https://github.com/glorialau123/gloria-lau-capstone-client/assets/96962463/c1ab4ee2-56af-456b-96a7-b9a3f0f196d9)
-
-
 #### Selections Page:
 - Mobile:
   
