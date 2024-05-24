@@ -40,6 +40,30 @@ async function addMessage(threadId, message) {
   return response;
 }
 
+const checkStatusAndPrintMessages = async (threadId, runId) => {
+  const maxPollingTime = 30000; //30 sec max time to wait for completion
+  const pollingInterval = 2000;
+  const startTime = Date.now();
+
+  while (Date.now() - startTime < maxPollingTime) {
+    const runStatus = await openai.beta.threads.runs.retrieve(threadId, runId);
+    if (runStatus.status === "completed") {
+      const messages = await openai.beta.threads.messages.list(threadId);
+      const conversation = messages.data.map((msg) => {
+        const role = msg.role;
+        const content = msg.content[0].text.value;
+        const roleName = role === "assistant" ? "Mr. Fluff" : role;
+
+        return `${roleName.charAt(0).toUpperCase() + roleName.slice(1)}: ${content}`;
+      });
+      return conversation;
+    }
+    //if run status is not complete, function waits for polling interval to pass before checking status again
+    await new Promise((resolve) => setTimeout(resolve, pollingInterval));
+  }
+  throw new Error("Run did not complete within expected time");
+};
+
 //route to create new thread via frontend axios call
 router.get("/thread", async (req, res) => {
   try {
@@ -59,34 +83,11 @@ router.post("/message", async (req, res) => {
     const run = await openai.beta.threads.runs.create(threadId, {
       assistant_id: assistantId,
     });
-    const runId = run.id;
-
-    let conversation = []; // Array to store conversation messages
-
-    const checkStatusAndPrintMessages = async (threadId, runId) => {
-      let runStatus = await openai.beta.threads.runs.retrieve(threadId, runId);
-      if (runStatus.status === "completed") {
-        let messages = await openai.beta.threads.messages.list(threadId);
-        messages.data.forEach((msg) => {
-          const role = msg.role;
-          const content = msg.content[0].text.value;
-          const roleName = role === "assistant" ? "Mr. Fluff" : role;
-          conversation.push(
-            `${roleName.charAt(0).toUpperCase() + roleName.slice(1)}: ${content}`
-          );
-        });
-        res.status(200).json({ conversation });
-      } else {
-        console.log("Run is not completed yet.");
-        res.status(500).send("Internal server error.");
-      }
-    };
-
-    setTimeout(() => {
-      checkStatusAndPrintMessages(threadId, runId);
-    }, 15000);
+    const conversation = await checkStatusAndPrintMessages(threadId, run.id);
+    res.status(200).json({ conversation });
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    res.status(500).json({ error: "Internal server error." });
   }
 });
 
